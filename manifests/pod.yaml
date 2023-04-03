@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dapi-test-pod
+spec:
+  containers:
+    - name: test-container
+      image: kasun05/samplejava:latest
+      #command: [ "/bin/sh", "-c", "env" ]
+      resources:
+        limits:
+          cpu: "100m"
+          memory: 500Mi
+      env:
+        - name: DEPLOY-ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: env-cng
+              key: ENV
+  restartPolicy: Never

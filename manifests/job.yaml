@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: samplejava
+spec:
+  template:
+    spec:
+      containers:
+      - name: samplejava
+        image: kasun05/samplejava:latest
+        #command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
